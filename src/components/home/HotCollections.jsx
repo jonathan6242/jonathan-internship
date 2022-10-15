@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import OwlCarousel from 'react-owl-carousel';
+import Skeleton from "../UI/Skeleton"
 
 const HotCollections = () => {
   const [hotCollections, setHotCollections] = useState([]);
@@ -74,64 +75,64 @@ const HotCollections = () => {
                 </OwlCarousel>
             ) : (
               <>
-              <OwlCarousel
-                margin={10} 
-                loop
-                nav={true}
-                responsive={{
-                  0: {
-                    items: 1
-                  },
-                  768: {
-                    items: 2
-                  },
-                  1000: {
-                    items: 3
-                  },
-                  1200: {
-                    items: 4
+                <OwlCarousel
+                  margin={10} 
+                  loop
+                  nav={true}
+                  responsive={{
+                    0: {
+                      items: 1
+                    },
+                    768: {
+                      items: 2
+                    },
+                    1000: {
+                      items: 3
+                    },
+                    1200: {
+                      items: 4
+                    }
+                  }}
+                >
+                
+                  {
+                    new Array(6).fill(0).map(((_, index) => (
+                      <div className="nft_coll" key={index}>
+                        <div className="nft_wrap">
+                          <a href="/">
+                            <Skeleton 
+                              width="100%"
+                              height="200px"
+                            />
+                          </a>
+                        </div>
+                        <div className="nft_coll_pp">
+                          <a href="/">
+                            <Skeleton 
+                              width="50px"
+                              height="50px"
+                              borderRadius="50%"
+                            />
+                          </a>
+                          <i className="fa fa-check"></i>
+                        </div>
+                        <div className="nft_coll_info">
+                          <a href='/'>
+                            <Skeleton 
+                              width="100px"
+                              height="20px"
+                            />
+                          </a>
+                          <br />
+                          <Skeleton 
+                            width="60px"
+                            height="20px"
+                          />
+                        </div>
+                      </div>
+                    )))
                   }
-                }}
-              >
-              
-                {
-                  new Array(6).fill(0).map(((_, index) => (
-                    <div className="nft_coll" key={index}>
-                      <div className="nft_wrap">
-                        <a href="/">
-                          <div className="skeleton-box" style={{
-                            width: '100%',
-                            height: '200px'
-                          }}></div>
-                        </a>
-                      </div>
-                      <div className="nft_coll_pp">
-                        <a href="/">
-                          <div className="skeleton-box" style={{
-                            width: '50px',
-                            height: '50px',
-                            borderRadius: '50%'
-                          }}></div>
-                        </a>
-                        <i className="fa fa-check"></i>
-                      </div>
-                      <div className="nft_coll_info">
-                        <a href='/'>
-                          <div className="skeleton-box" style={{
-                            width: '100px',
-                            height: '20px'
-                          }}></div>
-                        </a>
-                        <br />
-                        <div className="skeleton-box" style={{
-                          width: '60px',
-                          height: '20px'
-                        }}></div>
-                      </div>
-                    </div>
-                  )))
-                }
-              </OwlCarousel>
+                </OwlCarousel>
               </>
             )
           }
