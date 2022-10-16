@@ -7,8 +7,18 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import Aos from "aos";
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+      once: true
+    });
+  }, [])
+
   return (
     <Router>
       <Nav />
